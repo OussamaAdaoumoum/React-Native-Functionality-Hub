@@ -1,19 +1,20 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Colors} from '../../../theme/Color';
 
- const ChatList = () => {
-  const navigation = useNavigation();
+
+const ChatList = () => {
+
+
 
   
+  // const onNavigate = contactId => {
+  //   navigation.navigate('ChatScreen', {
+  //     contactId: contactId,
+  //     userId: userId,
+  //   });
+  // };
 
-//   const onNavigate = contactId => {
-//     navigation.navigate('ChatScreen', {
-//       userId: userId,
-//       contactId: contactId,
-//     });
-//   };
-
+  
   const Profiles = [
 
     {
@@ -87,52 +88,80 @@ import {useNavigation} from '@react-navigation/native';
         "imageSource": "../../../assets/pics/1648820953568.jpg"
     },
 ]
-
   return (
-    <ScrollView>
-    <View style={styles.container}>
-      <Text style={styles.title}>Contacts on Whatsapp</Text>
+    <>
       {Profiles.map((item, index) => (
         <View key={index}>
           <TouchableOpacity
-            // onPress={() => onNavigate(item.id)}
-            style={styles.contactContainer}>
-            <Image 
-            source={require('../../assets/beto.jpeg')}
-            style={styles.imgStyle} />
-            <Text style={styles.username}>{item.name}</Text>
+            // onPress={() => onNavigate(item.otherUser?.id)}
+            style={styles.container}>
+            <View style={styles.leftContainer}>
+              {/* {item.otherUser?.profile && ( */}
+                <Image
+                  source={require('../../../assets/beto.jpeg')}
+                  style={styles.profileImg}
+                />
+              {/* )} */}
+              <View>
+                <Text style={styles.username}>{item.name}</Text>
+                <Text style={styles.message}>{item.Job}</Text>
+              </View>
+            </View>
+
+            <View style={styles.rightContainer}>
+              <Text style={styles.timeStamp}>
+                {/* {item.lastMessage.timestamp?.toDate().toDateString()} */}
+                02/10/2022
+              </Text>
+              {/* {item.mute && (
+                <VectorIcon
+                  type="MaterialCommunityIcons"
+                  name="volume-variant-off"
+                  size={22}
+                  color={Colors.textGrey}
+                  style={styles.muteIcon}
+                />
+              )} */}
+            </View>
           </TouchableOpacity>
         </View>
       ))}
-    </View></ScrollView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#101d25',
-    padding: 16,
-    flex: 1,
-  },
-  imgStyle: {
+  profileImg: {
+    borderRadius: 50,
     height: 40,
     width: 40,
-    borderRadius: 50,
+    marginRight: 15,
+  },
+  container: {
+    backgroundColor: Colors.background,
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   username: {
+    color: Colors.textColor,
     fontSize: 16,
-    color: '#cdd4da',
-    marginLeft: 15,
   },
-  title: {
-    fontSize: 12,
-    color: '#8b959a',
-    marginVertical: 5,
+  message: {
+    color: Colors.textGrey,
+    fontSize: 14,
+    marginTop: 5,
   },
-  contactContainer: {
+  leftContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 15,
+  },
+  timeStamp: {
+    color: Colors.textGrey,
+    fontSize: 12,
+  },
+  muteIcon: {
+    marginTop: 5,
+    marginLeft: 20,
   },
 });
 

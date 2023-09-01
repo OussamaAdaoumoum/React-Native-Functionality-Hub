@@ -8,9 +8,11 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from '@expo/vector-icons'; 
 
 import Feed from "./src/screens/Feed";
-import Notifications from "./src/screens/Notifications";
-import Settings from "./src/screens/Settings";
+import Notifications from "./src/screens/Notifications/Notifications";
+import Settings from "./src/screens/Settings/Settings";
 import Payments from "./src/screens/drawerScreens/Payments";
+import ChatList from "./src/screens/Chat";
+import ChatListScreen from "./src/screens/ChatList/ChatListScreen";
 import {
     Image,
     Pressable,
@@ -132,8 +134,8 @@ function TopTabsGroup() {
           tabBarLabel: "Feed",
         }}
       />
-      <TopTabs.Screen name="Following" component={Payments} />
-      <TopTabs.Screen name="👀" component={Payments} />
+      <TopTabs.Screen name="Following" component={ChatListScreen} />
+      <TopTabs.Screen name="👀" component={ChatList} />
     </TopTabs.Navigator>
   );
 }
