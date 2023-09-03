@@ -138,13 +138,13 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   container: {
-    backgroundColor: Colors.background,
+    backgroundColor: "#fff", //Colors.background
     padding: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   username: {
-    color: Colors.textColor,
+    color: "black", //Colors.textColor
     fontSize: 16,
   },
   message: {

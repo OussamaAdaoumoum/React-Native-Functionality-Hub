@@ -8,7 +8,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 const RecentCalls = () => {
   return (
     <>
-      <Text style={styles.recent}>Recent</Text>
+      {/* <Text style={styles.recent}>Recent</Text> */}
       {RecentCallsData.map(item => (
         <View key={item.id} style={styles.container}>
           <View style={styles.row}>
@@ -22,7 +22,7 @@ const RecentCalls = () => {
                 )}
                 {item.outgoing && (
          
-                  <Feather name="arrow-up-right" size={20} color={Colors.tertiary} />
+                  <Feather name="arrow-up-right" size={20} color={Colors.blue} />
 
                 )}
                 <Text style={styles.shareLink}>{item.time}</Text>
@@ -31,11 +31,11 @@ const RecentCalls = () => {
           </View>
           {item.video && (
 
-            <Ionicons name="videocam" size={24} color={Colors.tertiary} />
+            <Ionicons name="videocam" size={24} color={Colors.blue} />
 
           )}
           {item.audio && (
-            <FontAwesome5 name="phone-alt" size={16} color={Colors.tertiary} />
+            <FontAwesome5 name="phone-alt" size={16} color={Colors.blue} />
           )}
         </View>
       ))}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   callLink: {
     fontSize: 15,
-    color: Colors.white,
+    color: "black", //Colors.white
     fontWeight: '500',
   },
   shareLink: {

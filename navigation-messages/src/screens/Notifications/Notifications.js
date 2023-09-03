@@ -8,7 +8,7 @@ import {Colors} from '../../../theme/Color';
 export default function Notifications() {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-        <CallLink />
+        {/* <CallLink /> */}
         <RecentCalls />
       </ScrollView>
     );
@@ -16,7 +16,7 @@ export default function Notifications() {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: Colors.background,
+        backgroundColor: "#fff", //Colors.background
         padding: 16,
     },
     });

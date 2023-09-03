@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   contactIcon: {
-    backgroundColor: Colors.tertiary,
+    backgroundColor: Colors.blue,
     height: 50,
     width: 50,
     borderRadius: 50,

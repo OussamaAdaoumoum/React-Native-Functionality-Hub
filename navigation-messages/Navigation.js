@@ -6,6 +6,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from '@expo/vector-icons'; 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Feed from "./src/screens/Feed";
 import Notifications from "./src/screens/Notifications/Notifications";
@@ -13,17 +14,82 @@ import Settings from "./src/screens/Settings/Settings";
 import Payments from "./src/screens/drawerScreens/Payments";
 import ChatList from "./src/screens/Chat";
 import ChatListScreen from "./src/screens/ChatList/ChatListScreen";
+import MyNetwork from "./src/screens/MyNetwork";
 import {
     Image,
     Pressable,
   } from "react-native";
+  import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
 
+
+
+
+  const LinkedInHeader = ({ navigation }) => {
+    return (
+      <View style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        borderBottomWidth: 1,
+        borderBottomColor: '#e1e1e1',
+      }}>
+        <View style={{
+          flex: 1,
+        }}>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+            <Image
+              source={require('./assets/beto.jpeg')}
+              style={{
+                width: 40,
+                height: 40,
+                borderRadius: 20,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={{
+          flex: 4,
+          alignItems: 'center',
+        }}>
+          <TextInput
+            placeholder="Search"
+            style={{
+              backgroundColor: '#f0f0f0',
+              borderRadius: 4,
+              paddingHorizontal: 8,
+              paddingVertical: 4,
+              width: '100%',
+            }}
+            // Add onChangeText and search functionality here
+          />
+        </View>
+        <View style={{
+          flex: 1,
+          alignItems: 'flex-end',
+        }}>
+          <TouchableOpacity>
+            <Ionicons name="chatbox" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  };
+  
+
+
+
+
+  
 // Bottom Tab Navigator
 const Tab = createBottomTabNavigator();
 function TabsGroup({navigation}){
     return(
         <Tab.Navigator
         screenOptions={({ route, navigation }) => ({
+          // header: () => <LinkedInHeader navigation={navigation} />,
+
             // headerTitleAlign: "center",
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
@@ -69,7 +135,7 @@ function TabsGroup({navigation}){
             />
             <Tab.Screen name="Notifications" component={Notifications} />
             <Tab.Screen name="Settings" component={Settings} />
-            <Tab.Screen name="My Network" component={Settings} />
+            <Tab.Screen name="My Network" component={MyNetwork} />
         </Tab.Navigator>
     );
 }
@@ -135,7 +201,7 @@ function TopTabsGroup() {
         }}
       />
       <TopTabs.Screen name="Following" component={ChatListScreen} />
-      <TopTabs.Screen name="👀" component={ChatList} />
+      <TopTabs.Screen name="👀" component={Feed} />
     </TopTabs.Navigator>
   );
 }
